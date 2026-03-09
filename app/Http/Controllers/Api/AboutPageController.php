@@ -10,6 +10,9 @@ class AboutPageController extends Controller
 {
     public function index(AboutPageService $service)
     {
-        return AboutPageResource::make($service->get());
+        return response()->json([
+            'data' => AboutPageResource::make($service->get()),
+            'stats' => $service->stats(),
+        ]);
     }
 }
