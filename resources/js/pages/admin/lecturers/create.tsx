@@ -53,18 +53,32 @@ export default function LecturerCreate() {
                 <h1 className="mb-6 text-2xl font-bold">ახალი ლექტორი</h1>
 
                 <form onSubmit={submit} className="max-w-2xl space-y-6">
-                    <div className="rounded-lg border p-6 space-y-4">
-                        <h2 className="text-lg font-semibold">ძირითადი ინფორმაცია</h2>
+                    <div className="space-y-4 rounded-lg border p-6">
+                        <h2 className="text-lg font-semibold">
+                            ძირითადი ინფორმაცია
+                        </h2>
 
                         <div>
                             <Label htmlFor="full_name">სახელი და გვარი *</Label>
-                            <Input id="full_name" value={data.full_name} onChange={(e) => setData('full_name', e.target.value)} />
+                            <Input
+                                id="full_name"
+                                value={data.full_name}
+                                onChange={(e) =>
+                                    setData('full_name', e.target.value)
+                                }
+                            />
                             <InputError message={errors.full_name} />
                         </div>
 
                         <div>
                             <Label htmlFor="title">თანამდებობა</Label>
-                            <Input id="title" value={data.title} onChange={(e) => setData('title', e.target.value)} />
+                            <Input
+                                id="title"
+                                value={data.title}
+                                onChange={(e) =>
+                                    setData('title', e.target.value)
+                                }
+                            />
                             <InputError message={errors.title} />
                         </div>
 
@@ -74,54 +88,101 @@ export default function LecturerCreate() {
                                 className="w-full rounded-md border bg-background px-3 py-2 text-sm"
                                 rows={2}
                                 value={data.short_bio}
-                                onChange={(e) => setData('short_bio', e.target.value)}
+                                onChange={(e) =>
+                                    setData('short_bio', e.target.value)
+                                }
                             />
                             <InputError message={errors.short_bio} />
                         </div>
 
                         <div>
                             <Label>ბიოგრაფია</Label>
-                            <TiptapEditor content={data.bio} onChange={(html) => setData('bio', html)} placeholder="ლექტორის ბიოგრაფია..." />
+                            <TiptapEditor
+                                content={data.bio}
+                                onChange={(html) => setData('bio', html)}
+                                placeholder="ლექტორის ბიოგრაფია..."
+                            />
                             <InputError message={errors.bio} />
                         </div>
 
                         <div className="flex items-center gap-4">
                             <label className="flex items-center gap-2">
-                                <input type="checkbox" checked={data.is_active} onChange={(e) => setData('is_active', e.target.checked)} />
+                                <input
+                                    type="checkbox"
+                                    checked={data.is_active}
+                                    onChange={(e) =>
+                                        setData('is_active', e.target.checked)
+                                    }
+                                />
                                 აქტიური
                             </label>
                         </div>
                     </div>
 
-                    <div className="rounded-lg border p-6 space-y-4">
+                    <div className="space-y-4 rounded-lg border p-6">
                         <h2 className="text-lg font-semibold">სურათი</h2>
                         <div>
                             <Label htmlFor="image">პროფილის სურათი</Label>
-                            <Input id="image" type="file" accept="image/*" onChange={handleImageChange} />
-                            {imagePreview && <img src={imagePreview} alt="Preview" className="mt-2 h-24 w-24 rounded-lg object-cover" />}
+                            <p className="mb-2 text-xs text-muted-foreground">
+                                რეკომენდირებული ზომა: 1200×1200px (aspect ratio
+                                1:1)
+                            </p>
+                            <Input
+                                id="image"
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                            />
+                            {imagePreview && (
+                                <img
+                                    src={imagePreview}
+                                    alt="Preview"
+                                    className="mt-2 h-24 w-24 rounded-lg object-cover"
+                                />
+                            )}
                             <InputError message={errors.image} />
                         </div>
                     </div>
 
-                    <div className="rounded-lg border p-6 space-y-4">
+                    <div className="space-y-4 rounded-lg border p-6">
                         <h2 className="text-lg font-semibold">SEO</h2>
                         <div>
                             <Label htmlFor="meta_title">Meta Title</Label>
-                            <Input id="meta_title" value={data.meta_title} onChange={(e) => setData('meta_title', e.target.value)} />
+                            <Input
+                                id="meta_title"
+                                value={data.meta_title}
+                                onChange={(e) =>
+                                    setData('meta_title', e.target.value)
+                                }
+                            />
                         </div>
                         <div>
-                            <Label htmlFor="meta_description">Meta Description</Label>
+                            <Label htmlFor="meta_description">
+                                Meta Description
+                            </Label>
                             <textarea
                                 id="meta_description"
                                 className="w-full rounded-md border bg-background px-3 py-2 text-sm"
                                 rows={2}
                                 value={data.meta_description}
-                                onChange={(e) => setData('meta_description', e.target.value)}
+                                onChange={(e) =>
+                                    setData('meta_description', e.target.value)
+                                }
                             />
                         </div>
                         <div>
                             <Label htmlFor="og_image">OG Image</Label>
-                            <Input id="og_image" type="file" accept="image/*" onChange={(e) => setData('og_image', e.target.files?.[0] || null)} />
+                            <Input
+                                id="og_image"
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) =>
+                                    setData(
+                                        'og_image',
+                                        e.target.files?.[0] || null,
+                                    )
+                                }
+                            />
                         </div>
                     </div>
 
@@ -130,7 +191,9 @@ export default function LecturerCreate() {
                             {processing ? 'იტვირთება...' : 'შენახვა'}
                         </Button>
                         <Link href="/admin/lecturers">
-                            <Button variant="outline" type="button">გაუქმება</Button>
+                            <Button variant="outline" type="button">
+                                გაუქმება
+                            </Button>
                         </Link>
                     </div>
                 </form>

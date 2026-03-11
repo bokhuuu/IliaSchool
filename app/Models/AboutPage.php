@@ -44,13 +44,21 @@ class AboutPage extends Model implements HasMedia
     public function registerMediaConversions(?\Spatie\MediaLibrary\MediaCollections\Models\Media $media = null): void
     {
         $this->addMediaConversion('thumb')
-            ->width(400)
-            ->height(300)
+            ->width(200)
+            ->height(250)
             ->sharpen(10);
+
+        $this->addMediaConversion('small')
+            ->width(400)
+            ->height(500);
 
         $this->addMediaConversion('medium')
             ->width(800)
-            ->height(600);
+            ->height(1000);
+
+        $this->addMediaConversion('large')
+            ->width(1200)
+            ->height(1500);
     }
 
 

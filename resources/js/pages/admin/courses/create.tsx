@@ -288,6 +288,10 @@ export default function CourseCreate({
                         <h2 className="text-lg font-semibold">სურათი</h2>
                         <div>
                             <Label htmlFor="image">კურსის სურათი</Label>
+                            <p className="mb-2 text-xs text-muted-foreground">
+                                რეკომენდირებული ზომა: 1920×960px (aspect ratio
+                                2:1)
+                            </p>
                             <Input
                                 id="image"
                                 type="file"

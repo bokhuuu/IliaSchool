@@ -88,6 +88,9 @@ export default function AboutEdit({ aboutPage: { data: about } }: Props) {
 
                     <div className="space-y-4 rounded-lg border p-6">
                         <h2 className="text-lg font-semibold">სურათი</h2>
+                        <p className="mb-2 text-xs text-muted-foreground">
+                            რეკომენდირებული ზომა: 1200×1500px (aspect ratio 4:5)
+                        </p>
                         {about.image && !imagePreview && (
                             <img
                                 src={about.image_medium || about.image}

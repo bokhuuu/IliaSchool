@@ -425,6 +425,10 @@ export default function CourseEdit({
                                 </h2>
                                 <div>
                                     <Label>კურსის სურათი</Label>
+                                    <p className="mb-2 text-xs text-muted-foreground">
+                                        რეკომენდირებული ზომა: 1920×960px (aspect
+                                        ratio 2:1)
+                                    </p>
                                     {course.image && !imagePreview && (
                                         <img
                                             src={

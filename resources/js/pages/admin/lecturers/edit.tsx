@@ -151,6 +151,10 @@ export default function LecturerEdit({ lecturer: { data: lecturer } }: Props) {
                         <h2 className="text-lg font-semibold">სურათი</h2>
                         <div>
                             <Label htmlFor="image">პროფილის სურათი</Label>
+                            <p className="mb-2 text-xs text-muted-foreground">
+                                რეკომენდირებული ზომა: 1200×1200px (aspect ratio
+                                1:1)
+                            </p>
                             {lecturer.image && !imagePreview && (
                                 <img
                                     src={lecturer.image_thumb || lecturer.image}

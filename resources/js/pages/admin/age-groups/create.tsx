@@ -16,7 +16,12 @@ const breadcrumbs = [
 
 export default function AgeGroupCreate() {
     const { data, setData, post, processing, errors } = useForm({
-        title: '', age_range: '', description: '', is_active: true, sort_order: 0, image: null as File | null,
+        title: '',
+        age_range: '',
+        description: '',
+        is_active: true,
+        sort_order: 0,
+        image: null as File | null,
     });
     const [preview, setPreview] = useState<string | null>(null);
 
@@ -30,38 +35,88 @@ export default function AgeGroupCreate() {
             <Head title="ახალი ასაკობრივი ჯგუფი" />
             <FlashMessage />
             <div className="p-6">
-                <h1 className="mb-6 text-2xl font-bold">ახალი ასაკობრივი ჯგუფი</h1>
+                <h1 className="mb-6 text-2xl font-bold">
+                    ახალი ასაკობრივი ჯგუფი
+                </h1>
                 <form onSubmit={submit} className="max-w-2xl space-y-6">
-                    <div className="rounded-lg border p-6 space-y-4">
+                    <div className="space-y-4 rounded-lg border p-6">
                         <div>
                             <Label htmlFor="title">სათაური *</Label>
-                            <Input id="title" value={data.title} onChange={(e) => setData('title', e.target.value)} />
+                            <Input
+                                id="title"
+                                value={data.title}
+                                onChange={(e) =>
+                                    setData('title', e.target.value)
+                                }
+                            />
                             <InputError message={errors.title} />
                         </div>
                         <div>
                             <Label htmlFor="age_range">ასაკი *</Label>
-                            <Input id="age_range" value={data.age_range} onChange={(e) => setData('age_range', e.target.value)} placeholder="მაგ: 6-12" />
+                            <Input
+                                id="age_range"
+                                value={data.age_range}
+                                onChange={(e) =>
+                                    setData('age_range', e.target.value)
+                                }
+                                placeholder="მაგ: 6-12"
+                            />
                             <InputError message={errors.age_range} />
                         </div>
                         <div>
                             <Label>აღწერა</Label>
-                            <TiptapEditor content={data.description} onChange={(html) => setData('description', html)} placeholder="ჯგუფის აღწერა..." />
+                            <TiptapEditor
+                                content={data.description}
+                                onChange={(html) =>
+                                    setData('description', html)
+                                }
+                                placeholder="ჯგუფის აღწერა..."
+                            />
                         </div>
                         <div className="flex items-center gap-4">
                             <label className="flex items-center gap-2">
-                                <input type="checkbox" checked={data.is_active} onChange={(e) => setData('is_active', e.target.checked)} />
+                                <input
+                                    type="checkbox"
+                                    checked={data.is_active}
+                                    onChange={(e) =>
+                                        setData('is_active', e.target.checked)
+                                    }
+                                />
                                 აქტიური
                             </label>
                         </div>
                     </div>
-                    <div className="rounded-lg border p-6 space-y-4">
+                    <div className="space-y-4 rounded-lg border p-6">
                         <h2 className="text-lg font-semibold">სურათი</h2>
-                        <Input type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0] || null; setData('image', f); if (f) setPreview(URL.createObjectURL(f)); }} />
-                        {preview && <img src={preview} alt="" className="mt-2 h-24 rounded-lg object-cover" />}
+                        <p className="mb-2 text-xs text-muted-foreground">
+                            რეკომენდირებული ზომა: 1200×1200px (aspect ratio 1:1)
+                        </p>
+                        <Input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => {
+                                const f = e.target.files?.[0] || null;
+                                setData('image', f);
+                                if (f) setPreview(URL.createObjectURL(f));
+                            }}
+                        />
+                        {preview && (
+                            <img
+                                src={preview}
+                                alt=""
+                                className="mt-2 h-24 rounded-lg object-cover"
+                            />
+                        )}
                     </div>
                     <div className="flex gap-3">
-                        <Button type="submit" disabled={processing}>{processing ? 'იტვირთება...' : 'შენახვა'}</Button>
-                        <Link href="/admin/age-groups"><Button variant="outline" type="button">გაუქმება</Button></Link>
+                        <Button type="submit" disabled={processing}>
+                            {processing ? 'იტვირთება...' : 'შენახვა'}
+                        </Button>
+                        <Link href="/admin/age-groups">
+                            <Button variant="outline" type="button">
+                                გაუქმება
+                            </Button>
+                        </Link>
                     </div>
                 </form>
             </div>

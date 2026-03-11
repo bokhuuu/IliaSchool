@@ -86,13 +86,18 @@ class Course extends Model implements HasMedia
             ->height(250)
             ->sharpen(10);
 
+
+        $this->addMediaConversion('small')
+            ->width(960)
+            ->height(480);
+
         $this->addMediaConversion('medium')
-            ->width(800)
-            ->height(500);
+            ->width(1536)
+            ->height(768);
 
         $this->addMediaConversion('large')
             ->width(1920)
-            ->height(1080);
+            ->height(960);
     }
 
 

@@ -35,6 +35,7 @@ class CourseResource extends JsonResource
 
             'image' => $this->getFirstMediaUrl('image'),
             'image_thumb' => $this->getFirstMediaUrl('image', 'thumb'),
+            'image_small' => $this->getFirstMediaUrl('image', 'small'),
             'image_medium' => $this->getFirstMediaUrl('image', 'medium'),
             'image_large' => $this->getFirstMediaUrl('image', 'large'),
             'og_image' => $this->getFirstMediaUrl('og_image'),
